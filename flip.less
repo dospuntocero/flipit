@@ -1,0 +1,67 @@
+body{
+  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+
+.rotateY(@amount) {
+            -webkit-transform: rotateY(@amount);
+               -moz-transform: rotateY(@amount);
+                -ms-transform: rotateY(@amount);
+                 -o-transform: rotateY(@amount);
+                    transform: rotateY(@amount);          
+}
+
+.transitionConfig(){
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition-duration: 0.5s, 0.2s;
+     -moz-transition-duration: 0.5s, 0.2s;
+      -ms-transition-duration: 0.5s, 0.2s;
+       -o-transition-duration: 0.5s, 0.2s;
+          transition-duration: 0.5s, 0.2s;
+  -webkit-transition-property: -webkit-transform, box-shadow;
+     -moz-transition-property: -moz-transform, box-shadow;
+      -ms-transition-property: -ms-transform, box-shadow;
+       -o-transition-property: -o-transform, box-shadow;
+          transition-property: transform box-shadow;
+}
+.perspective(){
+          -webkit-perspective: 500;
+                  perspective: 500;
+}
+.shadow(@color_sombra: #666) {
+	         -webkit-box-shadow: 0px 0px 5px @color_sombra;
+	            -moz-box-shadow: 0px 0px 5px @color_sombra;
+	                 box-shadow: 0px 0px 5px @color_sombra;
+}
+
+.flipit {
+    cursor: pointer;
+    position: relative;
+    height: 280px;
+    width: 225px;
+    .perspective();
+    
+    .front, .back {
+        border: 1px solid #DDDDDD;
+        padding: 10px;
+        height: inherit;
+        width: inherit;
+        position: absolute;
+        left: 0;
+        top: 0;
+        .transitionConfig();
+        .shadow();
+    }
+
+      .front  {.rotateY(0deg);    z-index: 900; background: #ccc;}
+      .back   {.rotateY(-180deg); z-index: 800; background: #aaa;}
+
+    &.flip{
+      .front  {.rotateY(180deg); z-index: 900; }
+      .back   {.rotateY(0deg);   z-index: 1000;}
+    }
+
+    &:hover {z-index: 1000;}
+}

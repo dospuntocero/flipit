@@ -1,0 +1,75 @@
+body {
+  font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+.flipit {
+  cursor: pointer;
+  position: relative;
+  height: 280px;
+  width: 225px;
+  -webkit-perspective: 500;
+  perspective: 500;
+}
+.flipit .front,
+.flipit .back {
+  border: 1px solid #DDDDDD;
+  padding: 10px;
+  height: inherit;
+  width: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition-duration: 0.5s, 0.2s;
+  -moz-transition-duration: 0.5s, 0.2s;
+  -ms-transition-duration: 0.5s, 0.2s;
+  -o-transition-duration: 0.5s, 0.2s;
+  transition-duration: 0.5s, 0.2s;
+  -webkit-transition-property: -webkit-transform, box-shadow;
+  -moz-transition-property: -moz-transform, box-shadow;
+  -ms-transition-property: -ms-transform, box-shadow;
+  -o-transition-property: -o-transform, box-shadow;
+  transition-property: transform box-shadow;
+  -webkit-box-shadow: 0px 0px 5px #666666;
+  -moz-box-shadow: 0px 0px 5px #666666;
+  box-shadow: 0px 0px 5px #666666;
+}
+.flipit .front {
+  -webkit-transform: rotatey(0deg);
+  -moz-transform: rotatey(0deg);
+  -ms-transform: rotatey(0deg);
+  -o-transform: rotatey(0deg);
+  transform: rotatey(0deg);
+  z-index: 900;
+  background: #ccc;
+}
+.flipit .back {
+  -webkit-transform: rotatey(-180deg);
+  -moz-transform: rotatey(-180deg);
+  -ms-transform: rotatey(-180deg);
+  -o-transform: rotatey(-180deg);
+  transform: rotatey(-180deg);
+  z-index: 800;
+  background: #aaa;
+}
+.flipit.flip .front {
+  -webkit-transform: rotatey(180deg);
+  -moz-transform: rotatey(180deg);
+  -ms-transform: rotatey(180deg);
+  -o-transform: rotatey(180deg);
+  transform: rotatey(180deg);
+  z-index: 900;
+}
+.flipit.flip .back {
+  -webkit-transform: rotatey(0deg);
+  -moz-transform: rotatey(0deg);
+  -ms-transform: rotatey(0deg);
+  -o-transform: rotatey(0deg);
+  transform: rotatey(0deg);
+  z-index: 1000;
+}
+.flipit:hover {
+  z-index: 1000;
+}
